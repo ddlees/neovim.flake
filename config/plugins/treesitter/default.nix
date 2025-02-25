@@ -3,5 +3,6 @@
     ./treesitter-textobjects.nix
     ./treesitter.nix
     ./ts-autotag.nix
+    ./ts-comments.nix
   ];
 }

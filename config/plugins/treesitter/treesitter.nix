@@ -4,7 +4,7 @@
 
     settings = {
       auto_install = false;
-      parser_install_dir.__raw = /* lua */ ''vim.fs.joinpath(vim.fn.stdpath('data'), 'treesitter')'';
+      parser_install_dir.__raw = ''vim.fs.joinpath(vim.fn.stdpath('data'), 'treesitter')'';
       highlight = { enable = true; };
       indent = { enable = true; };
       incremental_selection = {
@@ -18,4 +18,18 @@
       };
     };
   };
+
+  keymaps = [
+    {
+      key = "<c-space>";
+      action = "";
+      options.desc = "Increment Selection";
+    }
+    {
+      key = "<bs>";
+      action = "";
+      mode = ["x"];
+      options.desc = "Decrement Selection";
+    }
+  ];
 }

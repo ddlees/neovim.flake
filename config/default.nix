@@ -1,9 +1,11 @@
 {
   # Import all your configuration modules here
   imports = [ 
-    ./plugins
+    ./autocmds.nix
     ./colorscheme.nix
+    ./keymaps.nix
     ./options.nix
+    ./plugins
   ];
 
   viAlias = true;

@@ -10,7 +10,6 @@
         lsp_format = "fallback";
       };
       formatters_by_ft = rec {
-        lua = [ "stylua" ];
         sh = [ "shfmt" ];
         bash = sh ++ [
           "shellcheck"
@@ -19,11 +18,23 @@
         zsh = bash;
       };
       formatters = {
-        stylua = { command = lib.getExe pkgs.stylua; };
         shellcheck = { command = lib.getExe pkgs.shellcheck; };
         shellharden = { command = lib.getExe pkgs.shellharden; };
         shfmt = { command = lib.getExe pkgs.shfmt; };
       };
     };
   };
+
+  keymaps = [
+    {
+      key = "<leader>cF";
+      mode = [ "n" "v" ];
+      action.__raw = /* lua */ ''
+        function()
+          require("conform").format({ formatters = { "injected" }, timeout_ms = 3000 })
+        end
+      '';
+      options.desc = "Format Injected Languages";
+    }
+  ];
 }

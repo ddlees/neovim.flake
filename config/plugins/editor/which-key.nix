@@ -44,6 +44,8 @@
           }];
           __unkeyed-19 = [{__unkeyed-1 = "gx"; desc = "Open with system app";}];
         }
+        { __unkeyed-1 = "<bs>"; desc = "Decrement Selection"; mode = [ "x" ]; }
+        { __unkeyed-1 = "<c-space>"; desc = "Increment Selection"; mode = [ "n" "x" ]; }
       ];
     };
   };
