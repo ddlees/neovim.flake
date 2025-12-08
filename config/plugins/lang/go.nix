@@ -46,6 +46,7 @@
         semanticTokens = true;
       };
     };
+
     none-ls = {
       enable = true;
 
@@ -67,6 +68,11 @@
         goimports.command = lib.getExe' pkgs.gotools "goimports";
         gofumpt.command = lib.getExe pkgs.gofumpt;
       };
+    };
+
+    lint = {
+      lintersByFt.go = ["golangcilint"];
+      linters.golangcilint.cmd = lib.getExe pkgs.golangci-lint;
     };
 
     dap.enable = true;

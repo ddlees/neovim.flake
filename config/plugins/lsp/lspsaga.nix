@@ -19,12 +19,6 @@
     };
   };
 
-  autoCmd = [{
-    event = [ "CursorHold" ];
-    desc = "Show LSP diagnostics on CursorHold";
-    command = "Lspsaga show_cursor_diagnostics ++float";
-  }];
-
   keymaps = [
     {
       key = "gd";
