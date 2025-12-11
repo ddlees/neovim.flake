@@ -1,46 +1,34 @@
 { lib, pkgs, ... }: {
   plugins= {
-    crates = {
-      enable = true;
-      settings = {
-        completion.crates.enabled = true;
-        lsp = {
-          enabled = true;
-          actions = true;
-          completion = true;
-          hover = true;
-        };
-      };
-    };
-    lsp.servers.rust_analyzer = {
-      enable = true;
-    };
+    bacon.enable = true;
+    conform-nvim.settings.formatters_by_ft.rust = ["rustfmt"];
     rustaceanvim = {
       enable = true;
-      settings.server.defaultSettings.rust-analyzer = {
-        cargo = {
-          allFeatures = true;
-          loadOutDirsFromCheck = true;
-          buildScripts.enable = true;
+      settings.server = {
+        dap.adapters.lldb = {
+          type = "server";
+          port = "${''$''}{port}";
+          executable = {
+            command = "codelldb";
+            args = ["--port" "${''$''}{port}"];
+          };
         };
-        checkOnSave = true;
-        diagnostics.enable = true;
-        procMacro.enable = true;
-        files = {
-          exclude = [
-            ".direnv"
-            ".git"
-            ".jj"
-            ".github"
-            ".gitlab"
-            "bin"
-            "node_modules"
-            "target"
-            "venv"
-            ".venv"
-          ];
-          watcher = "client";
+
+        defaultSettings = {
+          rust-analyzer = {
+            cargo.allFeatures = true;
+            check.command = "clippy";
+            files.exclude = [
+              ".cargo"
+              ".direnv"
+              ".git"
+              ".github"
+              "target"
+            ];
+          };
         };
+
+        tools.enable_clippy = true;
       };
     };
   };
