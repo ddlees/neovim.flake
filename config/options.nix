@@ -1,12 +1,7 @@
 {
-  globals = {
-    mapleader = " ";
-    maplocalleader = "\\";
-  };
-
   opts = {
     autowrite = true;
-    clipboard.__raw = /* lua */ ''vim.env.SSH_TTY and "" or "unnamedplus"'';
+    clipboard = "unnamedplus";
     completeopt = "menu,menuone,noselect";
     conceallevel = 2;
     confirm = true;
@@ -29,6 +24,7 @@
     grepprg = "rg --vimgrep";
     ignorecase = true;
     inccommand = "nosplit";
+    incsearch = true;
     jumpoptions = "view";
     laststatus = 3;
     linebreak = true;
@@ -60,9 +56,10 @@
     splitbelow = true;
     splitkeep = "screen";
     splitright = true;
+    swapfile = false;
     tabstop = 2;
     termguicolors = true;
-    timeoutlen.__raw = /* lua */ ''vim.g.vscode and 1000 or 300'';
+    timeoutlen.__raw = ''vim.g.vscode and 1000 or 300'';
     undofile = true;
     undolevels = 10000;
     updatetime = 200;

@@ -1,19 +1,39 @@
 {
-  plugins.lsp = {
-    enable = true;
+  plugins = {
+    lsp = {
+      enable = true;
+      inlayHints = true;
+      luaConfig.post = {
+        codelens.enabled = false;
+        folds.enabled = true;
+        format = {
+          formatting_options = null;
+          timeout_ms = null;
+        };
+      };
+      capabilities = ''
+        workspace = {
+          fileOperations = {
+            didRename = true,
+            willRename = true,
+          },
+        },
+      '';
+    };
 
-    inlayHints = true;
+    lspconfig = {
+      enable = true;
+    };
   };
 
-  diagnostics = {
+  diagnostic = {
     underline = true;
-    virtual_text = false;
-    severity_sort = true;
-    signs = true;
-    float = {
-      border = "rounded";
-      source = "always";
-      focusable = false;
+    update_in_insert = false;
+    virtual_text = {
+      spacing = 4;
+      source = "if_many";
+      prefix = "●";
     };
+    severity_sort = true;
   };
 }

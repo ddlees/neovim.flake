@@ -4,7 +4,7 @@ rec {
       event = [ "FocusGained" "TermClose" "TermLeave" ];
       group = "nixvim_checktime";
       desc = "Check for file changes on regaining focus";
-      callback.__raw = /* lua */ ''
+      callback.__raw = ''
         function()
           if vim.o.buftype ~= "nofile" then
             vim.cmd("checktime")
@@ -16,7 +16,7 @@ rec {
       event = [ "TextYankPost" ];
       group = "nixvim_highlight_yank";
       desc = "Highlight on Yank";
-      callback.__raw = /* lua */ ''
+      callback.__raw = ''
         function()
           (vim.hl or vim.highlight).on_yank()
         end
@@ -26,7 +26,7 @@ rec {
       event = [ "VimResized" ];
       group = "nixvim_resize_splits";
       desc = "Resize Splits on Window Resize";
-      callback.__raw = /* lua */ ''
+      callback.__raw =  ''
         function()
           local current_tab = vim.fn.tabpagenr()
           vim.cmd("tabdo wincmd =")
@@ -38,7 +38,7 @@ rec {
       event = [ "BufReadPost" ];
       group = "nixvim_last_loc";
       desc = "Go to Last Location on Opening a Buffer";
-      callback.__raw = /* lua */ ''
+      callback.__raw =  ''
         function(event)
           local buf = event.buf
           if vim.tbl_contains({ "gitcommit" }, vim.bo[buf].filetype) or vim.b[buf].nixvim_last_loc then
@@ -75,7 +75,7 @@ rec {
         "startuptime"
         "tsplayground"
       ];
-      callback.__raw = /* lua */ ''
+      callback.__raw =  ''
         function(event)
           vim.bo[event.buf].buflisted = false
           vim.schedule(function()
@@ -96,7 +96,7 @@ rec {
       group = "nixvim_man_unlisted";
       pattern = [ "man_unlisted" ];
       desc = "Close man-files more easily when opened inline";
-      callback.__raw = /* lua */ ''
+      callback.__raw =  ''
         function(event)
           vim.bo[event.buf].buflisted = false
         end
@@ -113,7 +113,7 @@ rec {
         "markdown"
       ];
       desc = "Wrap and check for spelling in text filetypes";
-      callback.__raw = /* lua */ ''
+      callback.__raw =  ''
         function(event)
           vim.opt_local.wrap = true
           vim.opt_local.spell = true
@@ -129,7 +129,7 @@ rec {
         "json5"
       ];
       desc = "Fix conceallevel for json files";
-      callback.__raw = /* lua */ ''
+      callback.__raw =  ''
         function(event)
           vim.opt_local.conceallevel = 0
         end
@@ -139,7 +139,7 @@ rec {
       event = [ "BufWritePre" ];
       group = "nixvim_auto_create_dir";
       desc = "Auto create dir when saving a file that is missing intermediate directories";
-      callback.__raw = /* lua */ ''
+      callback.__raw =  ''
         function(event)
           if event.match:match("^%w%w+:[\\/][\\/]") then
             return
