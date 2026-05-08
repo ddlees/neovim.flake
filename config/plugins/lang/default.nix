@@ -1,8 +1,8 @@
 {
   imports = [
-    ./cpp.nix
-    ./docker.nix
-    ./go.nix
+    # ./cpp.nix
+    # ./docker.nix
+    # ./go.nix
     ./lua.nix
     ./nix.nix
   ];

@@ -11,16 +11,10 @@
       };
       formatters_by_ft = rec {
         sh = [ "shfmt" ];
-        bash = sh ++ [
-          "shellcheck"
-          "shellharden"
-        ];
-        zsh = bash;
       };
       formatters = {
-        shellcheck = { command = lib.getExe pkgs.shellcheck; };
-        shellharden = { command = lib.getExe pkgs.shellharden; };
-        shfmt = { command = lib.getExe pkgs.shfmt; };
+        injected.options.ignore_errors = true;
+        shfmt.command = lib.getExe pkgs.shfmt;
       };
     };
   };

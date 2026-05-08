@@ -2,55 +2,62 @@
   plugins.trouble = {
     enable = true;
 
-    settings = {
-      modes = {
-        lsp = {
-          win = { position = "right"; };
-        };
-      };
+    lazyLoad.enable = true;
+    lazyLoad.settings = {
+      cmd = [ "Trouble" ];
+
+      after = /*lua*/ ''function()
+        require("trouble").setup({
+          modes = {
+            lsp = {
+              win = { position = "right" },
+            },
+          },
+        })
+      end'';
+
+      keys = [
+        {
+          __unkeyed-1 = "<leader>xx";
+          __unkeyed-2 = "<cmd>Trouble diagnostics toggle<cr>";
+          desc = "Diagnostics (Trouble)";
+        }
+        {
+          __unkeyed-1 = "<leader>xX";
+          __unkeyed-2 = "<cmd>Trouble diagnostics toggle filter.buf=0<cr>";
+          desc = "Buffer Diagnostics (Trouble)";
+        }
+        {
+          __unkeyed-1 = "<leader>cs";
+          __unkeyed-2 = "<cmd>Trouble symbols toggle<cr>";
+          desc = "Symbols (Trouble)";
+        }
+        {
+          __unkeyed-1 = "<leader>cS";
+          __unkeyed-2 = "<cmd>Trouble lsp toggle<cr>";
+          desc = "LSP references/definitions/... (Trouble)";
+        }
+        {
+          __unkeyed-1 = "<leader>xL";
+          __unkeyed-2 = "<cmd>Trouble loclist toggle<cr>";
+          desc = "Location List (Trouble)";
+        }
+        {
+          __unkeyed-1 = "<leader>xQ";
+          __unkeyed-2 = "<cmd>Trouble qflist toggle<cr>";
+          desc = "Quickfix List (Trouble)";
+        }
+        {
+          __unkeyed-1 = "<leader>xt";
+          __unkeyed-2 = "<cmd>Trouble todo toggle<cr>";
+          desc = "TODOs (Trouble)";
+        }
+        {
+          __unkeyed-1 = "<leader>xT";
+          __unkeyed-2 = "<cmd>Trouble todo toggle filter = {tag = {TODO,FIX,FIXME}}<cr>";
+          desc = "TODO/FIX/FIXME List (Trouble)";
+        }
+      ];
     };
   };
-
-  keymaps = [
-    {
-      key = "<leader>xx";
-      action = "<cmd>Trouble diagnostics toggle<cr>";
-      options.desc = "Diagnostics (Trouble)";
-    }
-    {
-      key = "<leader>xX";
-      action = "<cmd>Trouble diagnostics toggle filter.buf=0<cr>";
-      options.desc = "Buffer Diagnostics (Trouble)";
-    }
-    {
-      key = "<leader>cs";
-      action = "<cmd>Trouble symbols toggle<cr>";
-      options.desc = "Symbols (Trouble)";
-    }
-    {
-      key = "<leader>cS";
-      action = "<cmd>Trouble lsp toggle<cr>";
-      options.desc = "LSP references/definitions/... (Trouble)";
-    }
-    {
-      key = "<leader>xL";
-      action = "<cmd>Trouble loclist toggle<cr>";
-      options.desc = "Location List (Trouble)";
-    }
-    {
-      key = "<leader>xQ";
-      action = "<cmd>Trouble qflist toggle<cr>";
-      options.desc = "Quickfix List (Trouble)";
-    }
-    {
-      key = "<leader>xt";
-      action = "<cmd>Trouble todo toggle<cr>";
-      options.desc = "TODOs (Trouble)";
-    }
-    {
-      key = "<leader>xT";
-      action = "<cmd>Trouble todo toggle filter = {tag = {TODO,FIX,FIXME}}<cr>";
-      options.desc = "TODO/FIX/FIXME List (Trouble)";
-    }
-  ];
 }

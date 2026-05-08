@@ -1,58 +1,75 @@
 {
   plugins.flash = {
     enable = true;
-  };
 
-  keymaps = [
-    {
-      key = "s";
-      mode = ["n" "x" "o"];
-      action.__raw = /* lua */ ''
-        function()
-          require("flash").jump()
-        end
-      '';
-      options.desc = "Flash Search";
-    }
-    {
-      key = "S";
-      mode = ["n" "x" "o"];
-      action.__raw = /* lua */ ''
-        function()
-          require("flash").treesitter()
-        end
-      '';
-      options.desc = "Flash Treesitter";
-    }
-    {
-      key = "r";
-      mode = ["o"];
-      action.__raw = /* lua */ ''
-        function()
-          require("flash").remote()
-        end
-      '';
-      options.desc = "Remote Flash";
-    }
-    {
-      key = "R";
-      mode = ["o" "x"];
-      action.__raw = /* lua */ ''
-        function()
-          require("flash").treesitter_search()
-        end
-      '';
-      options.desc = "Treesitter Search";
-    }
-    {
-      key = "<c-s>";
-      mode = ["c"];
-      action.__raw = /* lua */ ''
-        function()
-          require("flash").toggle()
-        end
-      '';
-      options.desc = "Toggle Flash Search";
-    }
-  ];
+    lazyLoad.enable = true;
+    lazyLoad.settings = {
+      event = "DeferredUIEnter";
+      keys = [
+        {
+          __unkeyed-1 = "s";
+          __unkeyed-2.__raw = ''
+            function()
+              require("flash").jump()
+            end
+          '';
+          mode = ["n" "x" "o"];
+          desc = "Flash Search";
+        }
+        {
+          __unkeyed-1 = "S";
+          __unkeyed-2.__raw = ''
+            function()
+              require("flash").treesitter()
+            end
+          '';
+          mode = ["n" "x" "o"];
+          desc = "Flash Treesitter";
+        }
+        {
+          __unkeyed-1 = "r";
+          __unkeyed-2.__raw = ''
+            function()
+              require("flash").remote()
+            end
+          '';
+          mode = ["o"];
+          desc = "Remote Flash";
+        }
+        {
+          __unkeyed-1 = "R";
+          __unkeyed-2.__raw = ''
+            function()
+              require("flash").treesitter_search()
+            end
+          '';
+          mode = ["o" "x"];
+          desc = "Treesitter Search";
+        }
+        {
+          __unkeyed-1 = "<c-s>";
+          __unkeyed-2.__raw = ''
+            function()
+              require("flash").toggle()
+            end
+          '';
+          mode = ["c"];
+          desc = "Toggle Flash Search";
+        }
+        {
+          __unkeyed-1 = "<c-space>";
+          __unkeyed-2.__raw = ''function()
+            require("flash").treesitter({
+              actions = {
+                ["<c-space>"] = "next",
+                ["<BS>"] = "prev",
+              }
+            })
+          end'';
+          mode = ["n" "o" "x"];
+          desc = "Treesitter Incremental Selection";
+        }
+      ];
+    };
+  };
 }

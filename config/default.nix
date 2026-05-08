@@ -1,9 +1,10 @@
 {
   # Import all your configuration modules here
-  imports = [ 
+  imports = [
     ./autocmds.nix
     ./colorscheme.nix
     ./keymaps.nix
+    ./lazyLoad.nix
     ./options.nix
     ./plugins
   ];

@@ -1,9 +1,4 @@
 {
-  globals = {
-    mapleader = " ";
-    maplocalleader = "\\";
-  };
-
   keymaps = [
     # better up/down
     {
@@ -241,7 +236,7 @@
     {
       key = "n";
       mode = ["n"];
-      action = "'Nn'[v:searchForward].'zv'";
+      action = "'Nn'[v:searchforward].'zv'";
       options = {
         desc = "Next Search Result";
         expr = true;
@@ -250,7 +245,7 @@
     {
       key = "n";
       mode = [ "o" "x"];
-      action = "'Nn'[v:searchForward]";
+      action = "'Nn'[v:searchforward]";
       options = {
         desc = "Next Search Result";
         expr = true;
@@ -259,7 +254,7 @@
     {
       key = "N";
       mode = ["n"];
-      action = "'nN'[v:searchForward].'zv'";
+      action = "'nN'[v:searchforward].'zv'";
       options = {
         desc = "Previous Search Result";
         expr = true;
@@ -268,7 +263,7 @@
     {
       key = "N";
       mode = [ "o" "x"];
-      action = "'nN'[v:searchForward]";
+      action = "'nN'[v:searchforward]";
       options = {
         desc = "Previous Search Result";
         expr = true;

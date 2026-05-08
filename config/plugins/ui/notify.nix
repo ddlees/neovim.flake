@@ -1,5 +1,5 @@
 {
-  plugins.nui = {
+  plugins.notify = {
     enable = true;
 
     lazyLoad.enable = true;
@@ -8,3 +8,4 @@
     };
   };
 }
+

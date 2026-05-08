@@ -1,21 +1,22 @@
 {
   plugins.lspsaga = {
     enable = true;
-
-    lightbulb = {
-      enable = false;
-      virtualText = false;
-    };
-    outline.keys.jump = "<cr>";
-    ui.border = "rounded";
-    scrollPreview = {
-      scrollDown = "<c-d>";
-      scrollUp = "<c-u>";
-    };
-    finder.methods = {
-      dec = "textDocument/declaration";
-      sig = "textDocument/signatureHelp";
-      lens = "textDocument/codeLens";
+    settings = {
+      lightbulb = {
+        enable = false;
+        virtualText = false;
+      };
+      outline.keys.jump = "<cr>";
+      ui.border = "rounded";
+      scrollPreview = {
+        scrollDown = "<c-d>";
+        scrollUp = "<c-u>";
+      };
+      finder.methods = {
+        dec = "textDocument/declaration";
+        sig = "textDocument/signatureHelp";
+        lens = "textDocument/codeLens";
+      };
     };
   };
 

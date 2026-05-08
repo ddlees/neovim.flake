@@ -1,6 +1,8 @@
 {
   imports = [
+    ./nvim-autopairs.nix
+    ./ts-comments.nvim.nix
     ./mini.ai.nix
-    ./mini.pairs.nix
+    ./mini.extra.nix
   ];
 }

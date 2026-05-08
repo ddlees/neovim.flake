@@ -1,4 +1,11 @@
 {
+  globals = {
+    mapleader = " ";
+    maplocalleader = "\\";
+
+    autoformat = true;
+  };
+
   opts = {
     autowrite = true;
     clipboard = "unnamedplus";

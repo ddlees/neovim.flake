@@ -1,24 +1,22 @@
 {
-  plugins.mini = {
+  plugins.mini-icons = {
     enable = true;
     mockDevIcons = true;
-    modules.icons = {
-      file = {
-        ".keep" = {
-          glyph = "󰊢";
-          hl = "MiniIconsGrey";
-        };
-        "devcontainer.json" = {
-          glyph = "";
-          hl = "MiniIconsAzure";
-        };
-      };
-      filetype = {
-        dotenv = {
-          glyph = "";
-          hl = "MiniIconsYellow";
-        };
-      };
+    lazyLoad.enable = true;
+    lazyLoad.settings = {
+      lazy = true;
+      after = /*lua*/ ''function()
+        require("mini.icons").setup({
+          file = {
+            [".keep"] = { glyph = "󰊢", hl = "MiniIconsGrey "},
+            ["devcontainer.json"] = { glyph = "", hl = "MiniIconsAzure" },
+          },
+          filetype = {
+            dotenv = { glyph = "", hl = "MiniIconsYellow" },
+          },
+        })
+        require("mini.icons").mock_nvim_web_devicons()
+      end'';
     };
   };
 }
