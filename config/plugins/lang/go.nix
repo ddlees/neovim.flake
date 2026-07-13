@@ -1,10 +1,20 @@
 { lib, pkgs, ...}: {
+
+  extraPackages = with pkgs; [
+    go
+    gopls
+    gofumpt
+    golangci-lint
+    delve
+  ];
+
   plugins = {
     lsp.servers.gopls = {
       enable = true;
 
       settings.gopls = {
         gofumpt = true;
+        experimentalPostfixCompletions = true;
         codelenses = {
           gc_details = true;
           generate = true;
@@ -29,10 +39,13 @@
         analyses = {
           nilness = true;
           unusedparams = true;
+          unusedvariable = true;
           unusedwrite = true;
           useany = true;
+          shadow = true;
         };
 
+        hoverKind = "Structured";
         usePlaceholders = true;
         completeUnimported = true;
         staticcheck = true;
@@ -43,6 +56,7 @@
           "-.vscode-test"
           "-node_modules"
         ];
+        vulncheck = "Imports";
         semanticTokens = true;
       };
     };
@@ -54,10 +68,6 @@
         code_actions = {
           gomodifytags.enable = true;
           impl.enable = true;
-        };
-        formatting = {
-          goimports.enable = true;
-          gofumpt.enable = true;
         };
       };
     };
@@ -107,4 +117,10 @@
       };
     };
   };
+
+  # TODO: load these when in golang context
+  keymaps = [
+    { key = "<leader>dT"; action.__raw = ''function() require("dap-go").debug_test() end''; options.desc = "Debug Go Test"; }
+    { key = "<leader>dL"; action.__raw = ''function() require("dap-go").debug_last_test() end''; options.desc = "Debug Last Go Test"; }
+  ];
 }
