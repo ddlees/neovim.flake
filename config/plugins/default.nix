@@ -1,5 +1,6 @@
 {
   imports = [
+    ./ai
     ./coding
     ./editor
     ./formatting

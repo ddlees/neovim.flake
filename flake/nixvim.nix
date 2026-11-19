@@ -1,5 +1,10 @@
 { inputs, self, ... }: {
-  flake.nixvimModules.default = ../config;
+  flake.nixvimModules.default = {
+    imports = [
+      ./nixvim-options.nix
+      ../config
+    ];
+  };
 
   nixvim = {
     packages.enable = true;

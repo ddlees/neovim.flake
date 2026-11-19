@@ -1,6 +1,7 @@
 { ... }: {
+  # These run during flake-parts evaluation
   imports = [
-    ./inputs.nix
+    ./flake-options.nix
     ./nixvim.nix
   ];
 }
